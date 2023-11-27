@@ -20,10 +20,11 @@ jobs:
 
       - name: Download Sarasa Gothic
         run: |
-          wget -q $(curl 'https://api.github.com/repos/be5invis/Sarasa-Gothic/releases' | jq -r '.[0].assets | map(.browser_download_url) | map(select(test("sarasa-gothic-ttf-[0-9.]+\\.7z"))) | .[0]')
-          7zr x sarasa-gothic-ttf-*.7z
+          wget -q $(curl 'https://api.github.com/repos/be5invis/Sarasa-Gothic/releases' | jq -r '.[0].assets | map(.browser_download_url) | map(select(test("Sarasa-TTF-[0-9.]+(-alpha\\.\\d)?\\.7z"))) | .[0]')
+          7zr x Sarasa-TTF-*.7z
+          ls *.ttf
           mkdir sarasa
-          mv sarasa-term-sc-*.ttf sarasa
+          mv SarasaTermSC-*.ttf sarasa
 
       - name: Download Font Patcher
         run: |
